@@ -12,9 +12,10 @@ Motor::Motor(byte enablePin,byte motorPin1,byte motorPin2) {
 
 void Motor::init() {
   pinMode(enablePin, OUTPUT);
-  analogWrite (enablePin, 255);
   pinMode(motorPin1, OUTPUT);
   pinMode(motorPin2, OUTPUT); 
+  analogWrite (enablePin, 255);
+
 }
 byte Motor::getEnabledPin() {
   return this->enablePin;
