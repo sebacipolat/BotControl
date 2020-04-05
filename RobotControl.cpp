@@ -4,6 +4,7 @@
 #include "ESP8266WiFi.h"
 
 RobotControl::RobotControl(Robot *robot){
+  this->robot = robot;
   init();
 }
 
@@ -31,17 +32,51 @@ void RobotControl::startHandler(){
           //turn on indicator led
           this->robot->enableIndicatorLed(true);
           while (client.connected()){
-            while (client.available()>0){      
-              valueFromSocket = client.read();      
-              if(valueFromSocket=='a'){
-                Serial.write("AAA");
-              }else if(valueFromSocket=='b'){
-               Serial.write("BBB");
-              }              
+            while (client.available()>0){
+              handleResponse(client.read());                                                                     
             } 
-          delay(10);
-        }
+          }
     }
 }
-void RobotControl::handleResponse(){
+void RobotControl::handleResponse(char valueFromSocket){
+  /*
+   * KEY MAP
+   * w forward
+   * a left
+   * d right
+   * s back
+   * q turn on led
+   * e turn off led
+   */
+    Serial.println("[received]"+valueFromSocket);
+    switch(valueFromSocket)
+    {
+        case 'w':
+          Serial.println("[Forward]");
+          this->robot->forward();
+        break;
+        case 's': 
+          Serial.println("[Backward]");
+          this->robot->backward();
+        break;
+        case 'a':
+          Serial.println("[Left]");
+          this->robot->turnLeft();
+        break;
+        case 'd': 
+          Serial.println("[Right]");
+          this->robot->turnRigth();
+        break;
+        case 'q':
+         Serial.println("[LED ON]");
+         this->robot->enableFrontLed(true);
+        break;
+        case 'e': 
+         Serial.println("[LED OFF]");
+         this->robot->enableFrontLed(false);
+        break;
+        default: 
+          Serial.println("[Invalid Command]");
+        break;
+    }
 }

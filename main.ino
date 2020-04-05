@@ -34,14 +34,16 @@ void setup() {
 }
 
 void loop() {
-  robot->turnON();
-  robot->enableFrontLed(true);
-  robot->enableIndicatorLed(true);
-  robot->forward(); 
-  delay(1000);
-  robot->enableFrontLed(false);
-  robot->enableFrontLed(false);
-  robot->backward(); 
-  delay(1000);
+  delay(2000);
+  robotControl->startHandler();
+  //robot->turnON();
+  //robot->enableFrontLed(true);
+  //robot->enableIndicatorLed(true);
+  //robot->forward(); 
+  //delay(1000);
+  //robot->enableFrontLed(false);
+  //robot->enableFrontLed(false);
+  //robot->backward(); 
+  //delay(1000);
 
 }

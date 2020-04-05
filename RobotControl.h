@@ -9,12 +9,13 @@ class RobotControl {
    private:
     Robot *robot;
     WiFiServer *wifiServer;
-
+    void handleResponse(char valueFromSocket);
+    
   public:
     RobotControl(Robot *robot);
     void init(); 
     void connectToWifi(char* ssid,char* password);    
     void startHandler();   
-    void handleResponse();
+    
 };
 #endif
