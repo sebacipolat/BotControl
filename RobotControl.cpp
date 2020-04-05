@@ -47,6 +47,8 @@ void RobotControl::handleResponse(char valueFromSocket){
    * s back
    * q turn on led
    * e turn off led
+   * z stop
+   * x start
    */
     Serial.println("[received]"+valueFromSocket);
     switch(valueFromSocket)
@@ -74,6 +76,14 @@ void RobotControl::handleResponse(char valueFromSocket){
         case 'e': 
          Serial.println("[LED OFF]");
          this->robot->enableFrontLed(false);
+        break;
+        case 'z': 
+         Serial.println("[STOP]");
+         this->robot->turnOFF();
+        break;
+        case 'x': 
+         Serial.println("[START]");
+         this->robot->turnON();
         break;
         default: 
           Serial.println("[Invalid Command]");

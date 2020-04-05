@@ -14,7 +14,7 @@ void Motor::init() {
   pinMode(enablePin, OUTPUT);
   pinMode(motorPin1, OUTPUT);
   pinMode(motorPin2, OUTPUT); 
-  analogWrite (enablePin, 255);
+  analogWrite (enablePin, 1023);
 
 }
 byte Motor::getEnabledPin() {
@@ -47,8 +47,8 @@ void Motor::backward(){
   digitalWrite(this->motorPin2, LOW);  
 }
 void Motor::turnON(){
-    digitalWrite(this->enablePin , HIGH);
+  digitalWrite(this->enablePin , HIGH);
 }
 void Motor::turnOFF(){
-  digitalWrite(this->enablePin , enablePin);
+  digitalWrite(this->enablePin , LOW);
 }
