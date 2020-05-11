@@ -49,6 +49,11 @@ void Motor::backward(){
 void Motor::turnON(){
   digitalWrite(this->enablePin , HIGH);
 }
+void Motor::pause(){
+  digitalWrite(this->enablePin , HIGH);
+  digitalWrite(this->motorPin1 , HIGH);
+  digitalWrite(this->motorPin2, HIGH);  
+}
 void Motor::turnOFF(){
   digitalWrite(this->enablePin , LOW);
 }

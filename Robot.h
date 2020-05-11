@@ -20,6 +20,7 @@ class Robot {
     void backward();
     void turnLeft();
     void turnRigth();
+    void pause();
     void enableIndicatorLed(boolean value);
     void enableFrontLed(boolean value);
     void turnON();

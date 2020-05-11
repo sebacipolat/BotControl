@@ -32,6 +32,10 @@ void Robot::turnRigth() {
   this->motorA->forward();
   this->motorB->backward();    
 }
+void Robot::pause() {
+  this->motorA->pause();
+  this->motorB->pause();    
+}
 void Robot::enableIndicatorLed(boolean value){
   if(value)
     digitalWrite(ledIndicator, HIGH);

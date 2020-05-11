@@ -22,6 +22,7 @@ class Motor {
     void turnOFF();
     void forward();
     void backward();
+    void pause();
     byte getEnabledPin();
     byte getMotorPin1();
     byte getMotorPin2();

@@ -51,23 +51,32 @@ void RobotControl::handleResponse(char valueFromSocket){
    * x start
    */
     Serial.println("[received]"+valueFromSocket);
+   
     switch(valueFromSocket)
     {
         case 'w':
           Serial.println("[Forward]");
           this->robot->forward();
+          delay(1000);
+          this->robot->pause();
         break;
         case 's': 
           Serial.println("[Backward]");
           this->robot->backward();
+          delay(1000);
+          this->robot->pause();
         break;
         case 'a':
           Serial.println("[Left]");
           this->robot->turnLeft();
+          delay(500);
+          this->robot->pause();
         break;
         case 'd': 
           Serial.println("[Right]");
           this->robot->turnRigth();
+          delay(500);
+          this->robot->pause();
         break;
         case 'q':
          Serial.println("[LED ON]");
